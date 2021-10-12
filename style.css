@@ -166,16 +166,16 @@ body {
     padding: 0.25rem 1rem;
 }
 
-.pw:hover buttom {
+.pw:hover button {
     opacity: 1;
     transform: translate(0, -88%);
 }
 
-.pw body {
+.pw-body {
     padding: 0 1rem 1rem;
 }
 
-.form-controle {
+.form-control {
     color: #eee;
     display: flex;
     justify-content: space-between;
@@ -183,7 +183,7 @@ body {
 }
 
 .generate {
-    display: flex;
+    display: block;
     background-color: #ecb602;
     color: rebeccapurple;
     padding: 1rem;
