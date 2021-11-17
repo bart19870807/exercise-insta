@@ -70,6 +70,10 @@
 //     textarea.remove();
 //     alert('password copy to clipboard'); 
 // })
+
+//// RECORDER
+
+
 let btn = document.querySelector('.record-btn')
 btn.addEventListener('click', async function() {
     let stream = await navigator.mediaDevices.getDisplayMedia({
