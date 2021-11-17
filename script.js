@@ -70,30 +70,32 @@
 //     textarea.remove();
 //     alert('password copy to clipboard'); 
 // })
-function timeLeft(endtime){
-    let t = Data.perse(endtime)-Data.perse(new Date());
-    let seconds = Math.floor((t/1000) % 60);
-    let minutes = Math.floor((t/1000/60) % 60);
-    let hours = Math.floor((t/(1000*60*60)) % 24);
-    let days = Math.floor(t/(1000*60*60*24));
-    return {
-        'total': t,
-        'days': days,
-        'hours': hours,
-        'minutes': minutes,
-        'seconds': seconds
-    };
-};
-$(document).ready(function() {
-    let today = new Date();
-    let deadline = 'January 1' + (today.getFullYear() + 1) + "00:00:00";
-    if (today.getMonth() == 0 && today.getDate() == 1){
-        deadline = 'January 1' + (today.getFullYear()) + '00:00:00';
-    };
-    $("#header").hover(function(){
-        $(this).toggleClass('bluelight');
-    });
-    $('.clock').hover(function(){
-        $(this).toggleClass('bluelight');
-    });
+let btn = document.querySelector('.record-btn')
+btn.addEventListener('click', async function() {
+    let stream = await navigator.mediaDevices.getDisplayMedia({
+        video: true
+    })
+    const mime = MediaRecorder.isTypeSupported("video/webm; codecs=vp9")
+        ? "video/webm; codecs=vp9"
+        : "video/webm"
+    let mediaRecorder = new MediaRecorder(stream, {
+        mimeType: mime
+    })
+    let chunks = []
+    mediaRecorder.addEventListener('dataavailable', function(e){
+        chunks.push(e.data)
+    })
+    mediaRecorder.addEventListener('stop', function(){
+        let blob = new Blob(chunks, {
+            type: chunks[0].type
+        })
+        let url = URL.createObjectURL(blob)
+        let video = document.querySelector('video')
+        video.src = url
+        let a = document.createElement('a')
+        a.href = url
+        a.download = 'video.webm'
+        a.click()
+    })
+    mediaRecorder.start()
 })
