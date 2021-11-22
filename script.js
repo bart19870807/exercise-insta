@@ -1,3 +1,4 @@
+'use strict'
 // const PwEl = document.getElementById('pw');
 // const copyEL = document.getElementById('copy');
 // const lenEL = document.getElementById('len');
@@ -105,9 +106,28 @@
 // })
 
 // ACCordion
-const accordion = document.getElementsByClassName('container');
-for (i=0; i<accordion.length; i++){
-    accordion[i].addEventListener('click', function() {
-        this.classList.toggle('active')
-    })
+// const accordion = document.getElementsByClassName('container');
+// for (i=0; i<accordion.length; i++){
+//     accordion[i].addEventListener('click', function() {
+//         this.classList.toggle('active')
+//     })
+// }
+
+const body = document.body;
+const bgColorBody = ['#ffb457', '#ff96bd', '#9999fb', '#ffe797', '#cffff1'];
+const menu = body.querySelector('.menu');
+const menuItem = menu.querySelectorAll('.menu_item');
+const menuBorder = menu.querySelector('.menu_border');
+let activeItem = menu.querySelector('.active');
+
+function clickItem(item, index) {
+    menu.style.removeProperty('--timeOut');
+    if (activeItem == item) return;
+    if (activeItem) {
+        activeItem.classList.remove('active');
+    }
+    item.classList.add('active');
+    body.style.backgroundColor = bgColorBody[index];
+    activeItem = item;
+    offsetMenuBorder(activeItem, menuBorder);
 }
