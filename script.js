@@ -113,21 +113,46 @@
 //     })
 // }
 
-const body = document.body;
-const bgColorBody = ['#ffb457', '#ff96bd', '#9999fb', '#ffe797', '#cffff1'];
-const menu = body.querySelector('.menu');
-const menuItem = menu.querySelectorAll('.menu_item');
-const menuBorder = menu.querySelector('.menu_border');
-let activeItem = menu.querySelector('.active');
+// "use strict";   
+// const body = document.body;  
+// const bgColorsBody = ["#ffb457", "#ff96bd", "#9999fb", "#ffe797", "#cffff1"];  
+// const menu = body.querySelector(".menu");  
+// const menuItems = menu.querySelectorAll(".menu__item");  
+// const menuBorder = menu.querySelector(".menu__border");  
+// let activeItem = menu.querySelector(".active");  
+// function clickItem(item, index) {  
+//   menu.style.removeProperty("--timeOut");  
+//   if (activeItem == item) return;  
+//   if (activeItem) {  
+//     activeItem.classList.remove("active");  
+//   }  
+//   item.classList.add("active");  
+//   body.style.backgroundColor = bgColorsBody[index];  
+//   activeItem = item;  
+//   offsetMenuBorder(activeItem, menuBorder);  
+// }  
+// function offsetMenuBorder(element, menuBorder) {  
+//   const offsetActiveItem = element.getBoundingClientRect();  
+//   const left = Math.floor(offsetActiveItem.left - menu.offsetLeft - (menuBorder.offsetWidth - offsetActiveItem.width) / 2) + "px";  
+//   menuBorder.style.transform = `translate3d(${left}, 0 , 0)`;  
+// }  
+// offsetMenuBorder(activeItem, menuBorder);  
+// menuItems.forEach((item, index) => {  
+//   item.addEventListener("click", () => clickItem(item, index));  
+// })  
+// window.addEventListener("resize", () => {  
+//   offsetMenuBorder(activeItem, menuBorder);  
+//   menu.style.setProperty("--timeOut", "none");  
+// });  
 
-function clickItem(item, index) {
-    menu.style.removeProperty('--timeOut');
-    if (activeItem == item) return;
-    if (activeItem) {
-        activeItem.classList.remove('active');
-    }
-    item.classList.add('active');
-    body.style.backgroundColor = bgColorBody[index];
-    activeItem = item;
-    offsetMenuBorder(activeItem, menuBorder);
-}
+
+// toggle switch dark
+const styleSheet = document.documentElement.style;
+const toggle = document.querySelector('.switch_input[data-theme-toggle]');
+toggle.addEventListener('click', () => {
+    const color1 = getComputedStyle(document.documentElement).getPropertyValue('--color-1');
+    const color2 = getComputedStyle(document.documentElement).getPropertyValue('--color-2');
+
+    styleSheet.setProperty('--color-1', color2);
+    styleSheet.setProperty('--color-2', color1);
+});

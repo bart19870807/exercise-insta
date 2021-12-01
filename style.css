@@ -249,7 +249,7 @@ h1 {
     content: '-';
     font-size: 30px;
 } */
-html {  
+/* html {  
     box-sizing: border-box;  
     --bgColorMenu : #1d1d27;  
     --duration: .7s;    
@@ -274,7 +274,7 @@ html {
     margin: 0;  
     display: flex;  
     /* Works well with 100% width */  
-    width: 32.05em;  
+    /* width: 32.05em;  
     font-size: 1.5em;  
     padding: 0 2.85em;  
     position: relative;  
@@ -351,4 +351,77 @@ html {
     .menu{
         font-size: .8em;
     }
+} */
+
+/* toggle switch dark slider */
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
+html,
+body {
+    height: 100%;
+}
+:root {
+    --color-1:#040404;
+    --color-2:#f9f9f9;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-1);
+    transition: background 0.6s;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 3.8rem;
+    height: 2rem;
+}
+.switch_input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.switch_slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ff4754;
+    border-radius: 1rem;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+.switch_slider::before {
+    content: "";
+    position: absolute;
+    left: 0.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1.6rem;
+    width: 1.6rem;
+    border-radius: 1.6rem;
+    background: var(--color-1);
+    transition: transform 0.2s, width 0.2s, background 0.2s;
+}
+.switch_input:checked + .switch_slider {
+    background: var(--color-2);
+}
+.switch_input:not(:checked):active + .switch_slider::before {
+    width: 2.4rem;
+}
+.switch_input:checked:active + .switch_slider::before {
+    transform: translate(1rem, -50%);
+    width: 2.4rem;
+}
+.switch_input:checked + .switch_slider::before {
+    transform: translate(1.8rem, -50%);
+} 
