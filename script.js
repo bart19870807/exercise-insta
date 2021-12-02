@@ -147,12 +147,12 @@
 
 
 // toggle switch dark
-const styleSheet = document.documentElement.style;
-const toggle = document.querySelector('.switch_input[data-theme-toggle]');
-toggle.addEventListener('click', () => {
-    const color1 = getComputedStyle(document.documentElement).getPropertyValue('--color-1');
-    const color2 = getComputedStyle(document.documentElement).getPropertyValue('--color-2');
+// const styleSheet = document.documentElement.style;
+// const toggle = document.querySelector('.switch_input[data-theme-toggle]');
+// toggle.addEventListener('click', () => {
+//     const color1 = getComputedStyle(document.documentElement).getPropertyValue('--color-1');
+//     const color2 = getComputedStyle(document.documentElement).getPropertyValue('--color-2');
 
-    styleSheet.setProperty('--color-1', color2);
-    styleSheet.setProperty('--color-2', color1);
-});
+//     styleSheet.setProperty('--color-1', color2);
+//     styleSheet.setProperty('--color-2', color1);
+// });
