@@ -160,7 +160,7 @@
        </label> -->
 
        <!-- BMI calculator -->
-       <h3><b>B</b>ody <b>M</b>ass <b>I</b>ndex Calculator</h3>
+       <!-- <h3><b>B</b>ody <b>M</b>ass <b>I</b>ndex Calculator</h3>
        <form class="form" id="form" onsubmit="return validateForm()">
     <div class="row-one">
         <input type="text" class="text-input" id="age" autocomplete="off" required/> <p class="text">Age</p>
@@ -178,7 +178,25 @@
         <input type="text" class="text-input" id="weight" autocomplete="off" required><p class="text">Weight (kg)</p>
     </div>
     <button type="button" id="submit">Submite</button>
-    </form>
+    </form> -->
+
+    <!-- TEXT MORPH -->
+    <div id="container">  
+        <span id="text1"></span>  
+        <span id="text2"></span>  
+   </div>  
+   <svg id="filters">  
+        <defs>  
+             <filter id="threshold">  
+                  <feColorMatrix in="SourceGraphic"  
+                            type="matrix"  
+                            values="1 0 0 0 0  
+                                                0 1 0 0 0  
+                                                0 0 1 0 0  
+                                                0 0 0 255 -140" />  
+             </filter>  
+        </defs>  
+   </svg>  
     <script src="./script.js"></script>
 </body>
 </html>
